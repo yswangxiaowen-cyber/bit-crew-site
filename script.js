@@ -184,6 +184,72 @@ const renderRequirements = (items = []) => `
   </dl>
 `;
 
+const renderCompanyProfile = (items = []) =>
+  items
+    .map(
+      (item) =>
+        `<div><dt>${escapeHtml(item.label)}</dt><dd>${escapeHtml(item.value).replaceAll("\n", "<br>")}</dd></div>`
+    )
+    .join("");
+
+const renderCompanyPolicy = (items = []) =>
+  items
+    .map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`)
+    .join("");
+
+const loadCompany = async () => {
+  const headlineTargets = document.querySelectorAll("[data-company-headline]");
+  const leadTargets = document.querySelectorAll("[data-company-lead]");
+  const introTargets = document.querySelectorAll("[data-company-intro]");
+  const valuesTargets = document.querySelectorAll("[data-company-values]");
+  const profileTargets = document.querySelectorAll("[data-company-profile]");
+  const policyTargets = document.querySelectorAll("[data-company-policy]");
+
+  if (
+    !headlineTargets.length &&
+    !leadTargets.length &&
+    !introTargets.length &&
+    !valuesTargets.length &&
+    !profileTargets.length &&
+    !policyTargets.length
+  ) {
+    return;
+  }
+
+  try {
+    const response = await fetch("data/company.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("company data not found");
+
+    const data = await response.json();
+
+    headlineTargets.forEach((target) => {
+      target.textContent = data.headline || "";
+    });
+
+    leadTargets.forEach((target) => {
+      target.textContent = data.lead || "";
+    });
+
+    introTargets.forEach((target) => {
+      target.textContent = data.intro || "";
+    });
+
+    valuesTargets.forEach((target) => {
+      target.innerHTML = (data.values || []).map((value) => `<span>${escapeHtml(value)}</span>`).join("");
+    });
+
+    profileTargets.forEach((target) => {
+      target.innerHTML = renderCompanyProfile(data.profile || []);
+    });
+
+    policyTargets.forEach((target) => {
+      target.innerHTML = renderCompanyPolicy(data.policy || []);
+    });
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
 const loadRecruit = async () => {
   const summaries = document.querySelectorAll("[data-recruit-summary]");
   const introTargets = document.querySelectorAll("[data-recruit-intro]");
@@ -270,6 +336,7 @@ const loadNews = async () => {
 };
 
 loadServices();
+loadCompany();
 loadRecruit();
 loadNews();
 loadTopNotice();

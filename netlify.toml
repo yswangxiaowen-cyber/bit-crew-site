@@ -45,7 +45,12 @@
 
 [[redirects]]
   from = "/about"
-  to = "/#about"
+  to = "/company.html"
+  status = 301
+
+[[redirects]]
+  from = "/company"
+  to = "/company.html"
   status = 301
 
 [[redirects]]

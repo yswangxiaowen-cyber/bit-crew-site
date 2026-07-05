@@ -43,6 +43,32 @@ collections:
               - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "採用情報"] }
               - { label: "一覧用説明", name: "excerpt", widget: "text", required: false }
               - { label: "本文", name: "body", widget: "text" }
+      - name: "company"
+        label: "会社概要"
+        file: "data/company.json"
+        format: "json"
+        fields:
+          - { label: "ページ見出し", name: "headline", widget: "string" }
+          - { label: "リード文", name: "lead", widget: "text" }
+          - { label: "紹介文", name: "intro", widget: "text" }
+          - label: "方針タグ"
+            name: "values"
+            widget: "list"
+            field: { label: "タグ", name: "value", widget: "string" }
+          - label: "会社基本情報"
+            name: "profile"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "項目名", name: "label", widget: "string" }
+              - { label: "内容", name: "value", widget: "text" }
+          - label: "大切にしていること"
+            name: "policy"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "本文", name: "body", widget: "text" }
       - name: "services"
         label: "事業内容"
         file: "data/services.json"
