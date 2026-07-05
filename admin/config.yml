@@ -24,7 +24,8 @@ collections:
           - { label: "小見出し", name: "label", widget: "string", default: "Important Notice" }
           - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
           - { label: "タイトル", name: "title", widget: "string" }
-          - { label: "説明文", name: "excerpt", widget: "text" }
+          - { label: "首页显示说明", name: "displayExcerpt", widget: "text", required: false, hint: "只显示在首页重要告知卡片里。请写短一点，1～2行即可。" }
+          - { label: "詳細内容", name: "excerpt", widget: "text", hint: "完整说明内容。可以写长一点，用在详细页面或链接目标页面。" }
           - { label: "ボタン文字", name: "linkText", widget: "string", default: "詳細を見る", required: false }
           - { label: "リンク先", name: "linkUrl", widget: "string", required: false, hint: "例: news.html?id=BnC-AuRR。空にするとボタンを非表示にします。" }
       - name: "news"

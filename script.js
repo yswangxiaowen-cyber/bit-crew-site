@@ -98,7 +98,7 @@ const loadTopNotice = async () => {
       date.textContent = data.date ? formatDate(data.date) : "";
     }
     if (title) title.textContent = data.title || "";
-    if (excerpt) excerpt.textContent = data.excerpt || "";
+    if (excerpt) excerpt.textContent = data.displayExcerpt || data.excerpt || "";
     if (link) {
       link.textContent = data.linkText || "詳細を見る";
       link.href = data.linkUrl || "news.html";
