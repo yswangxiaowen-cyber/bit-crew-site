@@ -28,12 +28,26 @@ const escapeHtml = (value) =>
 const sortNews = (items) =>
   [...items].sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
+const makeAutoId = (...parts) =>
+  parts
+    .filter(Boolean)
+    .join("-")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9\u3040-\u30ff\u3400-\u9fff]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+
+const getNewsId = (item) => item.slug || makeAutoId(item.date, item.title);
+
+const getServiceId = (item) => item.slug || makeAutoId(item.number, item.title);
+
 const renderNewsItem = (item) => `
   <article>
     <time datetime="${escapeHtml(item.date)}">${formatDate(escapeHtml(item.date))}</time>
     <div>
       <p class="news-category">${escapeHtml(item.category)}</p>
-      <h3><a href="news.html?id=${encodeURIComponent(item.slug)}">${escapeHtml(item.title)}</a></h3>
+      <h3><a href="news.html?id=${encodeURIComponent(getNewsId(item))}">${escapeHtml(item.title)}</a></h3>
       ${item.excerpt ? `<p>${escapeHtml(item.excerpt)}</p>` : ""}
     </div>
   </article>
@@ -96,7 +110,7 @@ const loadTopNotice = async () => {
 };
 
 const renderServiceCard = (item) => `
-  <a class="service-card" href="services.html#${encodeURIComponent(item.slug)}">
+  <a class="service-card" href="services.html#${encodeURIComponent(getServiceId(item))}">
     <span>${escapeHtml(item.number)}</span>
     <h3>${escapeHtml(item.title)}</h3>
     <p>${escapeHtml(item.summary)}</p>
@@ -116,7 +130,7 @@ const renderServiceSection = (section) => {
 };
 
 const renderServiceDetail = (item) => `
-  <article class="service-detail" id="${escapeHtml(item.slug)}">
+  <article class="service-detail" id="${escapeHtml(getServiceId(item))}">
     <div class="service-detail-head">
       <span>${escapeHtml(item.number)}</span>
       ${item.label ? `<p class="label">${escapeHtml(item.label)}</p>` : ""}
@@ -149,7 +163,7 @@ const loadServices = async () => {
 
     if (jumpTarget) {
       jumpTarget.innerHTML = services
-        .map((item) => `<a href="#${escapeHtml(item.slug)}">${escapeHtml(item.title)}</a>`)
+        .map((item) => `<a href="#${escapeHtml(getServiceId(item))}">${escapeHtml(item.title)}</a>`)
         .join("");
     }
 
@@ -232,7 +246,7 @@ const loadNews = async () => {
     });
 
     if (detailTarget && currentId) {
-      const item = items.find((entry) => entry.slug === currentId);
+      const item = items.find((entry) => getNewsId(entry) === currentId);
       if (item) {
         detailTarget.innerHTML = renderNewsDetail(item);
         document.title = `${item.title} | 株式会社ビット・クルー`;

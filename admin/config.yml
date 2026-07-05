@@ -38,7 +38,7 @@ collections:
             summary: "{{fields.date}} - {{fields.title}}"
             fields:
               - { label: "タイトル", name: "title", widget: "string" }
-              - { label: "URL用ID", name: "slug", widget: "string", hint: "半角英数字とハイフン推奨。例: company-news-2026" }
+              - { label: "URL用ID", name: "slug", widget: "hidden", required: false }
               - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
               - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "採用情報"] }
               - { label: "一覧用説明", name: "excerpt", widget: "text", required: false }
@@ -54,7 +54,7 @@ collections:
             summary: "{{fields.number}} - {{fields.title}}"
             fields:
               - { label: "番号", name: "number", widget: "string", hint: "例: 01" }
-              - { label: "URL用ID", name: "slug", widget: "string", hint: "半角英数字とハイフン推奨。例: sap-consulting" }
+              - { label: "URL用ID", name: "slug", widget: "hidden", required: false }
               - { label: "タイトル", name: "title", widget: "string" }
               - { label: "一覧用説明", name: "summary", widget: "text" }
               - { label: "詳細リード文", name: "lead", widget: "text" }
