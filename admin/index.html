@@ -65,7 +65,7 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function (user) {
+        window.netlifyIdentity.on("init", function () {
           var hasInvite = window.location.hash.indexOf("invite_token=") !== -1;
           var hasRecovery = window.location.hash.indexOf("recovery_token=") !== -1;
 
@@ -73,17 +73,7 @@
             window.netlifyIdentity.open("signup");
           } else if (hasRecovery) {
             window.netlifyIdentity.open("recovery");
-          } else if (!user) {
-            window.netlifyIdentity.open("login");
           }
-        });
-
-        window.netlifyIdentity.on("login", function () {
-          document.location.href = "/admin/";
-        });
-
-        window.netlifyIdentity.on("signup", function () {
-          document.location.href = "/admin/";
         });
 
         var openButton = document.getElementById("identity-open");
