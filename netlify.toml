@@ -14,6 +14,11 @@
     X-Robots-Tag = "noindex, nofollow"
 
 [[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 301
+
+[[redirects]]
   from = "/contact"
   to = "/"
   status = 301
