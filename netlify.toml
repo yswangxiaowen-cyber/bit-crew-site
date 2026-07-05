@@ -1,0 +1,64 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[redirects]]
+  from = "/contact"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/news"
+  to = "/news.html"
+  status = 301
+
+[[redirects]]
+  from = "/news/*"
+  to = "/news.html?id=:splat"
+  status = 301
+
+[[redirects]]
+  from = "/column"
+  to = "/news.html"
+  status = 301
+
+[[redirects]]
+  from = "/column/*"
+  to = "/news.html"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/service"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/recruit"
+  to = "/recruit.html"
+  status = 301
+
+[[redirects]]
+  from = "/fee"
+  to = "/recruit.html"
+  status = 301

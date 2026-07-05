@@ -1,0 +1,89 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "https://www.bit-crew.co.jp"
+display_url: "https://www.bit-crew.co.jp"
+logo_url: "assets/hero-enterprise-tech.png"
+
+collections:
+  - name: "site_data"
+    label: "サイトデータ"
+    files:
+      - name: "news"
+        label: "お知らせ"
+        file: "data/news.json"
+        format: "json"
+        fields:
+          - label: "お知らせ一覧"
+            name: "news"
+            widget: "list"
+            summary: "{{fields.date}} - {{fields.title}}"
+            fields:
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "URL用ID", name: "slug", widget: "string", hint: "半角英数字とハイフン推奨。例: company-news-2026" }
+              - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "採用情報"] }
+              - { label: "一覧用説明", name: "excerpt", widget: "text", required: false }
+              - { label: "本文", name: "body", widget: "text" }
+      - name: "services"
+        label: "事業内容"
+        file: "data/services.json"
+        format: "json"
+        fields:
+          - label: "事業一覧"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.number}} - {{fields.title}}"
+            fields:
+              - { label: "番号", name: "number", widget: "string", hint: "例: 01" }
+              - { label: "URL用ID", name: "slug", widget: "string", hint: "半角英数字とハイフン推奨。例: sap-consulting" }
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "一覧用説明", name: "summary", widget: "text" }
+              - { label: "詳細リード文", name: "lead", widget: "text" }
+              - { label: "英字ラベル", name: "label", widget: "string", required: false }
+              - label: "詳細セクション"
+                name: "sections"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "見出し", name: "title", widget: "string" }
+                  - { label: "本文", name: "body", widget: "text", required: false }
+                  - label: "箇条書き"
+                    name: "items"
+                    widget: "list"
+                    required: false
+                    field: { label: "項目", name: "item", widget: "string" }
+      - name: "recruit"
+        label: "採用情報"
+        file: "data/recruit.json"
+        format: "json"
+        fields:
+          - label: "基本条件"
+            name: "requirements"
+            widget: "list"
+            summary: "{{fields.label}}: {{fields.value}}"
+            fields:
+              - { label: "項目名", name: "label", widget: "string" }
+              - { label: "内容", name: "value", widget: "string" }
+          - { label: "紹介文", name: "intro", widget: "text" }
+          - label: "募集タグ"
+            name: "tags"
+            widget: "list"
+            field: { label: "タグ", name: "tag", widget: "string" }
+          - label: "主な業務内容"
+            name: "work"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "本文", name: "body", widget: "text" }
+          - label: "歓迎する方"
+            name: "points"
+            widget: "list"
+            field: { label: "項目", name: "point", widget: "string" }
