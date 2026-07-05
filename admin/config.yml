@@ -15,6 +15,18 @@ collections:
   - name: "site_data"
     label: "サイトデータ"
     files:
+      - name: "top_notice"
+        label: "トップ重要告知"
+        file: "data/top-notice.json"
+        format: "json"
+        fields:
+          - { label: "表示する", name: "enabled", widget: "boolean", default: true }
+          - { label: "小見出し", name: "label", widget: "string", default: "Important Notice" }
+          - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+          - { label: "タイトル", name: "title", widget: "string" }
+          - { label: "説明文", name: "excerpt", widget: "text" }
+          - { label: "ボタン文字", name: "linkText", widget: "string", default: "詳細を見る", required: false }
+          - { label: "リンク先", name: "linkUrl", widget: "string", required: false, hint: "例: news.html?id=BnC-AuRR。空にするとボタンを非表示にします。" }
       - name: "news"
         label: "お知らせ"
         file: "data/news.json"

@@ -58,6 +58,43 @@ const renderNewsDetail = (item) => {
   `;
 };
 
+const loadTopNotice = async () => {
+  const section = document.querySelector("[data-top-notice]");
+  if (!section) return;
+
+  try {
+    const response = await fetch("data/top-notice.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("top notice data not found");
+
+    const data = await response.json();
+    if (data.enabled === false) {
+      section.hidden = true;
+      return;
+    }
+
+    const label = section.querySelector("[data-top-notice-label]");
+    const date = section.querySelector("[data-top-notice-date]");
+    const title = section.querySelector("[data-top-notice-title]");
+    const excerpt = section.querySelector("[data-top-notice-excerpt]");
+    const link = section.querySelector("[data-top-notice-link]");
+
+    if (label) label.textContent = data.label || "Important Notice";
+    if (date) {
+      date.dateTime = data.date || "";
+      date.textContent = data.date ? formatDate(data.date) : "";
+    }
+    if (title) title.textContent = data.title || "";
+    if (excerpt) excerpt.textContent = data.excerpt || "";
+    if (link) {
+      link.textContent = data.linkText || "詳細を見る";
+      link.href = data.linkUrl || "news.html";
+      link.hidden = !data.linkUrl;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
 const renderServiceCard = (item) => `
   <a class="service-card" href="services.html#${encodeURIComponent(item.slug)}">
     <span>${escapeHtml(item.number)}</span>
@@ -221,3 +258,4 @@ const loadNews = async () => {
 loadServices();
 loadRecruit();
 loadNews();
+loadTopNotice();
