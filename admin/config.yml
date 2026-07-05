@@ -41,7 +41,7 @@ collections:
               - { label: "タイトル", name: "title", widget: "string" }
               - { label: "URL用ID", name: "slug", widget: "hidden", required: false }
               - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
-              - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "採用情報"] }
+              - { label: "カテゴリ", name: "category", widget: "select", options: ["重要なお知らせ", "お知らせ", "採用情報"] }
               - { label: "一覧用説明", name: "excerpt", widget: "text", required: false }
               - { label: "本文", name: "body", widget: "text" }
       - name: "company"
@@ -70,6 +70,17 @@ collections:
             fields:
               - { label: "見出し", name: "title", widget: "string" }
               - { label: "本文", name: "body", widget: "text" }
+      - name: "contact"
+        label: "お問い合わせ"
+        file: "data/contact.json"
+        format: "json"
+        fields:
+          - { label: "表示する", name: "enabled", widget: "boolean", default: true }
+          - { label: "見出し", name: "title", widget: "string", default: "お問い合わせ" }
+          - { label: "説明文", name: "lead", widget: "text" }
+          - { label: "補足", name: "note", widget: "text", required: false }
+          - { label: "ボタン文字", name: "buttonText", widget: "string", default: "お問い合わせフォームを開く" }
+          - { label: "GoogleフォームURL", name: "formUrl", widget: "string" }
       - name: "services"
         label: "事業内容"
         file: "data/services.json"

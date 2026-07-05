@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "title": "お問い合わせ",
+  "lead": "ご相談、ご依頼、協業に関するお問い合わせは、下記フォームよりご連絡ください。",
+  "note": "内容を確認のうえ、必要に応じて担当者よりご連絡いたします。",
+  "buttonText": "お問い合わせフォームを開く",
+  "formUrl": "https://forms.gle/HfuAFounYSiFY7YG7"
+}

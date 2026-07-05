@@ -250,6 +250,58 @@ const loadCompany = async () => {
   }
 };
 
+const loadContact = async () => {
+  const sections = document.querySelectorAll("[data-contact-section]");
+  const titleTargets = document.querySelectorAll("[data-contact-title]");
+  const leadTargets = document.querySelectorAll("[data-contact-lead]");
+  const noteTargets = document.querySelectorAll("[data-contact-note]");
+  const buttonTargets = document.querySelectorAll("[data-contact-link]");
+  const linkTargets = [...buttonTargets];
+
+  if (!sections.length && !titleTargets.length && !leadTargets.length && !noteTargets.length && !linkTargets.length) {
+    return;
+  }
+
+  try {
+    const response = await fetch("data/contact.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("contact data not found");
+
+    const data = await response.json();
+
+    if (data.enabled === false) {
+      sections.forEach((section) => {
+        section.hidden = true;
+      });
+      linkTargets.forEach((link) => {
+        link.hidden = true;
+      });
+      return;
+    }
+
+    titleTargets.forEach((target) => {
+      target.textContent = data.title || "お問い合わせ";
+    });
+
+    leadTargets.forEach((target) => {
+      target.textContent = data.lead || "";
+    });
+
+    noteTargets.forEach((target) => {
+      target.textContent = data.note || "";
+      target.hidden = !data.note;
+    });
+
+    buttonTargets.forEach((link) => {
+      link.textContent = data.buttonText || "お問い合わせフォームを開く";
+      link.href = data.formUrl || "#";
+      link.hidden = !data.formUrl;
+    });
+
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
 const loadRecruit = async () => {
   const summaries = document.querySelectorAll("[data-recruit-summary]");
   const introTargets = document.querySelectorAll("[data-recruit-intro]");
@@ -340,3 +392,4 @@ loadCompany();
 loadRecruit();
 loadNews();
 loadTopNotice();
+loadContact();
