@@ -106,9 +106,9 @@ a {
 
 .hero {
   position: relative;
-  min-height: 560px;
-  height: 68vh;
-  max-height: 720px;
+  min-height: 660px;
+  height: 76vh;
+  max-height: 820px;
   overflow: hidden;
   background: var(--deep);
 }
@@ -225,7 +225,7 @@ p {
 }
 
 .notice-section {
-  padding: 36px clamp(20px, 5vw, 64px);
+  padding: 44px clamp(20px, 5vw, 64px);
   background: var(--paper);
 }
 
@@ -234,7 +234,7 @@ p {
   grid-template-columns: 180px minmax(0, 1fr) auto;
   gap: 24px;
   align-items: center;
-  padding: 26px 30px;
+  padding: 34px 34px;
   border: 1px solid rgba(13, 47, 59, 0.14);
   border-radius: 8px;
   background: #fff;
