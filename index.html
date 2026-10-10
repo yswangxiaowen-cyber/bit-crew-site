@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>株式会社ビット・クルー | SAP導入・アドオン開発・Webシステム開発支援</title>
-    <meta name="description" content="株式会社ビット・クルーは、SAP導入、アドオン開発、運用保守、情報システム・Webシステム開発を支援する東京のITサービス企業です。">
+    <title>株式会社ビット・クルー | SAP支援・システム・AI開発</title>
+    <meta name="description" content="株式会社ビット・クルーは、SAP導入・アドオン開発・運用保守と、情報システム・AI開発に取り組む東京のIT企業です。お客様向けの開発支援に加え、会議AI「Kiroku」を自社で企画・開発しています。">
     <link rel="canonical" href="https://bit-crew.co.jp/">
-    <meta property="og:title" content="株式会社ビット・クルー | SAP・Webシステム開発支援">
-    <meta property="og:description" content="SAP導入、アドオン開発、運用保守、情報システム・Webシステム開発まで、現場に寄り添う技術支援で業務変革を支援します。">
+    <meta property="og:title" content="株式会社ビット・クルー | SAP支援・システム・AI開発">
+    <meta property="og:description" content="SAP導入・開発・運用支援と、システム・AI開発。お客様向けの技術支援と、会議AI「Kiroku」の自主開発に取り組んでいます。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bit-crew.co.jp/">
     <meta property="og:site_name" content="株式会社ビット・クルー">
@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://bit-crew.co.jp/assets/hero-enterprise-tech.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="assets/bit-crew-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=ee1263f5a70d">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -41,12 +41,13 @@
           "ABAP開発",
           "Fiori",
           "情報システム開発",
-          "Webシステム開発"
+          "Webシステム開発",
+          "AIソフトウェア開発"
         ]
       }
     </script>
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header">
       <a class="brand" href="#top" aria-label="株式会社ビット・クルー ホーム">
         <img class="brand-logo" src="assets/bit-crew-mark.svg" alt="">
@@ -61,6 +62,7 @@
       </button>
       <nav class="site-nav" aria-label="メインナビゲーション">
         <a href="services.html">事業内容</a>
+        <a href="products.html">製品紹介</a>
         <a href="company.html">会社概要</a>
         <a href="recruit.html">採用情報</a>
         <a href="news.html">お知らせ</a>
@@ -72,12 +74,12 @@
         <div class="hero-media" role="img" aria-label="都市とデジタルネットワークを表現したビジュアル"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow">SAP / Enterprise System / Web Development</p>
+          <p class="eyebrow">SAP &amp; Business Systems / AI Software Development</p>
           <h1>業務変革を着実に支援。</h1>
-          <p class="lead">SAP導入からアドオン開発、運用保守、Webシステム開発まで。現場に寄り添う技術支援で、お客様のビジネス目標を実現します。</p>
+          <p class="lead">SAPの業務要件整理、アドオン開発、運用中の調査・改修、情報システムの構築。日々の業務を支える技術支援と、会議の決定を次の行動につなぐAI「Kiroku」の自社開発に取り組んでいます。</p>
           <div class="hero-actions">
-            <a class="button primary" href="news.html">お知らせを見る</a>
-            <a class="button secondary" href="services.html">サービスを見る</a>
+            <a class="button primary" href="services.html#technical-support">技術支援を見る</a>
+            <a class="button secondary" href="products.html">製品紹介を見る</a>
           </div>
         </div>
       </section>
@@ -99,35 +101,66 @@
       <section class="section" id="services" aria-labelledby="services-title">
         <div class="section-inner">
           <div class="section-heading">
-            <p class="label">Services</p>
+            <p class="label">Business</p>
             <h2 id="services-title">事業内容</h2>
-            <p>SAP領域と情報システム開発の両面から、企画、導入、開発、保守運用まで一貫して支援します。</p>
+            <p>SAPの導入から運用までを支えるサービスと、業務に合わせたシステム・AIの開発。お客様向けの技術支援に加え、会議AI「Kiroku」を自社で企画・開発しています。</p>
+            <div class="business-links" aria-label="事業分野">
+              <a href="#technical-support">SAP導入・開発・運用支援</a>
+              <a href="#products">システム・AI開発</a>
+            </div>
           </div>
-          <div class="service-grid" data-services-list="home">
-            <a class="service-card" href="services.html#sap-consulting">
-              <span>01</span>
-              <h3>SAP導入コンサルティング支援</h3>
-              <p>業務・システム課題、導入目的、取引先のシステム化動向を整理し、品質の高いSAP ERP導入を支援します。</p>
-              <strong>詳細を見る</strong>
-            </a>
-            <a class="service-card" href="services.html#sap-addon">
-              <span>02</span>
-              <h3>SAPアドオン設計・開発</h3>
-              <p>標準機能だけでは対応できない業務要件に対して、要件定義、設計、開発、テスト、展開まで支援します。</p>
-              <strong>詳細を見る</strong>
-            </a>
-            <a class="service-card" href="services.html#sap-operation">
-              <span>03</span>
-              <h3>SAP運用支援・保守支援</h3>
-              <p>障害分析、バージョンアップ、改善提案、業務運用改善など、現行システムの安定稼働を幅広く支えます。</p>
-              <strong>詳細を見る</strong>
-            </a>
-            <a class="service-card" href="services.html#web-system">
-              <span>04</span>
-              <h3>情報システム・Webシステム開発</h3>
-              <p>業務要件に合わせた設計、開発、保守、機能追加、セキュリティ対策まで、長く使えるシステムを提供します。</p>
-              <strong>詳細を見る</strong>
-            </a>
+          <div class="business-sections">
+            <section class="business-group" id="technical-support" aria-labelledby="sap-title">
+              <div class="business-group-heading">
+                <p class="label">SAP Services</p>
+                <h3 class="business-heading" id="sap-title">SAP導入・開発・運用支援</h3>
+                <p>業務要件の整理、標準機能とアドオンの使い分け、稼働後の調査・改善まで。プロジェクトの各段階を支援します。</p>
+              </div>
+              <div class="service-grid" data-services-list="home" data-service-group="sap">
+                <a class="service-card" href="services.html#sap-consulting">
+                  <span>01</span>
+                  <h3>SAP導入コンサルティング支援</h3>
+                  <p>SAP標準機能でできることと、追加対応が必要なことを整理。FI・CO・SD・MMを中心に、業務要件、移行、テストの準備を支援します。</p>
+                  <strong>詳細を見る</strong>
+                </a>
+                <a class="service-card" href="services.html#sap-addon">
+                  <span>02</span>
+                  <h3>SAPアドオン設計・開発</h3>
+                  <p>帳票、データ連携、バッチ、Fiori画面など、標準機能では埋まらない要件に対応。設計・開発・テストから本番移行まで支援します。</p>
+                  <strong>詳細を見る</strong>
+                </a>
+                <a class="service-card" href="services.html#sap-operation">
+                  <span>03</span>
+                  <h3>SAP運用支援・保守支援</h3>
+                  <p>「データが合わない」「処理が止まる」「機能を変えたい」。問い合わせの調査、障害対応、保守開発、手順整備まで日々の運用を支えます。</p>
+                  <strong>詳細を見る</strong>
+                </a>
+              </div>
+            </section>
+            <section class="business-group" id="products" aria-labelledby="products-title">
+              <div class="business-group-heading">
+                <p class="label">Systems &amp; AI Development</p>
+                <h3 class="business-heading" id="products-title">システム・AI開発</h3>
+                <p>お客様の業務に合わせた情報システム開発と、会議AI「Kiroku」の自主開発。用途と課題に合わせて、設計から取り組みます。</p>
+              </div>
+              <div class="system-offerings">
+                <div class="service-grid" data-services-list="home" data-service-group="systems">
+                  <a class="service-card" href="services.html#web-system">
+                    <span>お客様向けの開発支援</span>
+                    <h3>情報システム開発</h3>
+                    <p>社内の情報管理、手作業の多い業務、既存システムとの連携。業務の流れに合わせてシステムを設計し、開発・改修・保守まで対応します。</p>
+                    <strong>詳細を見る</strong>
+                  </a>
+                </div>
+                <a class="service-card kiroku-card" href="products.html">
+                  <span>自社企画・開発 / 開発中</span>
+                  <h3>会議AI「Kiroku」</h3>
+                  <p>会議の決定や未解決の課題を、次の行動につなぐ会議AI。判断の根拠をたどり、人が確認して仕事に活かせる製品として開発しています。</p>
+                  <p class="product-note">製品構想：意思決定・リスク通知・ナレッジ・ToDo</p>
+                  <strong>Kirokuの製品紹介を見る</strong>
+                </a>
+              </div>
+            </section>
           </div>
         </div>
       </section>
@@ -137,16 +170,19 @@
           <div class="about-copy">
             <p class="label">About</p>
             <h2 id="about-title">“ビッ”とくる支援を、誠実に。</h2>
-            <p>株式会社ビット・クルーは、日本を拠点に、先端のIT技術で製品開発と情報サービスを提供しています。最新技術を活用できる人材を育成し、安定した経営とコンプライアンスを大切にしながら社会へ貢献します。</p>
+            <p>要件を聞いて終わり、開発して終わりにはしない。SAP・Webシステムの設計、テスト、稼働後の調査・改善まで取り組みます。また、会議で交わした決定や課題を業務につなげるために、会議AI「Kiroku」を自社で企画・開発しています。</p>
             <div class="value-strip" aria-label="経営方針" data-company-values>
-              <span>技術力</span>
+              <span>SAP支援</span>
+              <span>AIソフトウェア開発</span>
               <span>安定運用</span>
               <span>継続支援</span>
             </div>
           </div>
           <a class="company-list-link" href="company.html" aria-label="会社概要の詳細ページを見る">
             <dl class="company-list" data-company-profile>
-              <div><dt>社名</dt><dd>株式会社ビット・クルー<br>Bit-Crew Co.,Ltd.</dd></div>
+              <div><dt>社名</dt><dd>株式会社ビット・クルー</dd></div>
+              <div><dt>設立</dt><dd>2024年02月01日</dd></div>
+              <div><dt>登録番号</dt><dd>T6011501030355</dd></div>
               <div><dt>代表者</dt><dd>代表取締役 王 暁文</dd></div>
               <div><dt>資本金</dt><dd>800万円</dd></div>
               <div><dt>所在地</dt><dd>〒114-0003 東京都北区豊島4-18-7-611</dd></div>
@@ -226,6 +262,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=ef95ddab52dd"></script>
   </body>
 </html>

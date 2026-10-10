@@ -94,6 +94,12 @@ collections:
               - { label: "番号", name: "number", widget: "string", hint: "例: 01" }
               - { label: "URL用ID", name: "slug", widget: "hidden", required: false }
               - { label: "タイトル", name: "title", widget: "string" }
+              - label: "事業分類"
+                name: "group"
+                widget: "select"
+                options:
+                  - { label: "SAP導入・開発・運用支援", value: "sap" }
+                  - { label: "システム・AI開発（お客様向けの開発支援）", value: "systems" }
               - { label: "一覧用説明", name: "summary", widget: "text" }
               - { label: "詳細リード文", name: "lead", widget: "text" }
               - { label: "英字ラベル", name: "label", widget: "string", required: false }

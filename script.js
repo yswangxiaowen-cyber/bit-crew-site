@@ -111,7 +111,7 @@ const loadTopNotice = async () => {
 
 const renderServiceCard = (item) => `
   <a class="service-card" href="services.html#${encodeURIComponent(getServiceId(item))}">
-    <span>${escapeHtml(item.number)}</span>
+    <span>${item.group === "systems" ? "お客様向けの開発支援" : escapeHtml(item.number)}</span>
     <h3>${escapeHtml(item.title)}</h3>
     <p>${escapeHtml(item.summary)}</p>
     <strong>詳細を見る</strong>
@@ -143,12 +143,15 @@ const renderServiceDetail = (item) => `
   </article>
 `;
 
+const servicesForGroup = (items, group) =>
+  group ? items.filter((item) => item.group === group) : items;
+
 const loadServices = async () => {
   const listTargets = document.querySelectorAll("[data-services-list]");
-  const detailTarget = document.querySelector("[data-services-detail]");
+  const detailTargets = document.querySelectorAll("[data-services-detail]");
   const jumpTarget = document.querySelector("[data-services-jump]");
 
-  if (!listTargets.length && !detailTarget && !jumpTarget) return;
+  if (!listTargets.length && !detailTargets.length && !jumpTarget) return;
 
   try {
     const response = await fetch("data/services.json", { cache: "no-store" });
@@ -158,7 +161,8 @@ const loadServices = async () => {
     const services = data.services || [];
 
     listTargets.forEach((target) => {
-      target.innerHTML = services.map(renderServiceCard).join("");
+      target.innerHTML = servicesForGroup(services, target.dataset.serviceGroup)
+        .map(renderServiceCard).join("");
     });
 
     if (jumpTarget) {
@@ -167,9 +171,10 @@ const loadServices = async () => {
         .join("");
     }
 
-    if (detailTarget) {
-      detailTarget.innerHTML = services.map(renderServiceDetail).join("");
-    }
+    detailTargets.forEach((target) => {
+      target.innerHTML = servicesForGroup(services, target.dataset.serviceGroup)
+        .map(renderServiceDetail).join("");
+    });
   } catch (error) {
     console.warn(error);
   }
